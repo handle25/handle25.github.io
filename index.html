@@ -31,10 +31,27 @@ nav { display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; }
 nav a, .brand { text-decoration: none; }
 nav a:hover, .brand:hover { text-decoration: underline; }
 .hero { background: var(--dark); color: #f4fbf6; }
-.hero .wrap { padding-block: clamp(3.5rem, 10vw, 7.4rem); }
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 15rem);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+.portrait {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  object-position: center 25%;
+  border: 1px solid #759287;
+  border-radius: .35rem;
+}
 .hero a { color: inherit; }
 h1, h2, h3 { font-family: Georgia, serif; font-weight: 400; line-height: 1.12; margin: 0; }
-h1 { font-size: clamp(3.2rem, 9.5vw, 7.3rem); letter-spacing: -.067em; }
+h1 { font-size: clamp(2.8rem, 7.8vw, 6.2rem); letter-spacing: -.067em; }
 h2 { font-size: clamp(2rem, 4.4vw, 3.35rem); letter-spacing: -.045em; }
 h3 { font-size: clamp(1.35rem, 3vw, 1.85rem); letter-spacing: -.025em; }
 .lead { max-width: 42rem; font-size: clamp(1.08rem, 2vw, 1.28rem); color: #daebe2; margin-block: 1.4rem; }
@@ -50,7 +67,8 @@ ul { padding-left: 1.2rem; margin-bottom: 0; }
 footer { color: var(--muted); }
 @media (max-width: 680px) {
   .wrap { width: calc(100% - 2rem); }
-  .section { grid-template-columns: 1fr; }
+  .section, .hero .wrap { grid-template-columns: 1fr; }
+  .portrait { max-width: 11rem; }
 }
 @media print {
   header, .actions { display: none; }
@@ -76,12 +94,15 @@ footer { color: var(--muted); }
 <main id="main">
   <div class="hero">
     <div class="wrap">
-      <h1>Sophie Handley</h1>
-      <p class="lead">I’m a Senior Research Associate at the Federal Reserve Bank of Boston. My research interests include labor mobility, international trade, and applied econometrics. In my independent work, I study how workers adjust to trade shocks through commuting and migration.</p>
-      <div class="actions">
-        <a class="button" href="sophie-handley-cv.pdf">View CV (PDF)</a>
-        <a href="mailto:handle25@msu.edu">Email me</a>
+      <div>
+        <h1>Sophie Handley</h1>
+        <p class="lead">I’m a Senior Research Associate at the Federal Reserve Bank of Boston. My research interests include labor mobility, international trade, and applied econometrics. In my independent work, I study how workers adjust to trade shocks through commuting and migration.</p>
+        <div class="actions">
+          <a class="button" href="sophie-handley-cv.pdf">View CV (PDF)</a>
+          <a href="mailto:handle25@msu.edu">Email me</a>
+        </div>
       </div>
+      <img class="portrait" src="sophie-handley-headshot.jpg" alt="Portrait of Sophie Handley" width="640" height="800">
     </div>
   </div>
   <div class="wrap">
